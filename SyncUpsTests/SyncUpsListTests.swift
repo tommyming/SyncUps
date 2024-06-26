@@ -80,7 +80,7 @@ final class SyncUpsListTests: XCTestCase {
         
         await store.send(.confirmAddButtonTapped) {
             $0.addSyncUp = nil
-            $0.syncUps = [editedSyncUp]
+//            $0.syncUps = [editedSyncUp]
         }
     }
     

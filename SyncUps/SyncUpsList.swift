@@ -14,7 +14,7 @@ struct SyncUpsList {
     @ObservableState
     struct State: Equatable {
         @Presents var addSyncUp: SyncUpForm.State?
-        var syncUps: IdentifiedArrayOf<SyncUp> = []
+        @Shared(.syncUps) var syncUps
     }
     
     enum Action {
@@ -146,18 +146,27 @@ extension LabelStyle where Self == TrailingIconLabelStyle {
     static var trailingIcon: Self { Self() }
 }
 
-
-#Preview {
-    NavigationStack {
-        SyncupListView(
-            store: Store(
-                initialState: SyncUpsList.State(
-                    syncUps: [.mock]
-                ),
-                reducer: {
-                    SyncUpsList()
-                }
-            )
+extension PersistenceReaderKey where Self == PersistenceKeyDefault<FileStorageKey<IdentifiedArrayOf<SyncUp>>>{
+    static var syncUps: Self {
+        PersistenceKeyDefault(
+            .fileStorage(.documentsDirectory.appendingPathComponent("sync-ups.json")),
+            []
         )
     }
 }
+
+
+//#Preview {
+//    NavigationStack {
+//        SyncupListView(
+//            store: Store(
+//                initialState: SyncUpsList.State(
+//                    syncUps: IdentifiedArray(.mock)
+//                ),
+//                reducer: {
+//                    SyncUpsList()
+//                }
+//            )
+//        )
+//    }
+//}
