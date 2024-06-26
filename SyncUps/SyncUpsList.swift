@@ -155,13 +155,12 @@ extension PersistenceReaderKey where Self == PersistenceKeyDefault<FileStorageKe
     }
 }
 
-
 //#Preview {
 //    NavigationStack {
 //        SyncupListView(
 //            store: Store(
 //                initialState: SyncUpsList.State(
-//                    syncUps: IdentifiedArray(.mock)
+//                    syncUps: Shared(.syncupa)
 //                ),
 //                reducer: {
 //                    SyncUpsList()

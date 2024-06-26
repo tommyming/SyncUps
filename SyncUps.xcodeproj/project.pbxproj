@@ -10,6 +10,7 @@
 		031183A52C12E3E700D77A5E /* SyncUpsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031183A42C12E3E700D77A5E /* SyncUpsListTests.swift */; };
 		031183A72C12E64C00D77A5E /* SyncUpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031183A62C12E64C00D77A5E /* SyncUpForm.swift */; };
 		031183A92C12F90A00D77A5E /* SyncUpsFormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031183A82C12F90A00D77A5E /* SyncUpsFormTests.swift */; };
+		031BC39A2C2C02E90016DF8F /* SyncUpDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BC3992C2C02E90016DF8F /* SyncUpDetail.swift */; };
 		0360F7AD2C1194FB0034A43C /* SyncUpsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0360F7AC2C1194FB0034A43C /* SyncUpsApp.swift */; };
 		0360F7AF2C1194FB0034A43C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0360F7AE2C1194FB0034A43C /* ContentView.swift */; };
 		0360F7B12C1194FD0034A43C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0360F7B02C1194FD0034A43C /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		031183A42C12E3E700D77A5E /* SyncUpsListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpsListTests.swift; sourceTree = "<group>"; };
 		031183A62C12E64C00D77A5E /* SyncUpForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpForm.swift; sourceTree = "<group>"; };
 		031183A82C12F90A00D77A5E /* SyncUpsFormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpsFormTests.swift; sourceTree = "<group>"; };
+		031BC3992C2C02E90016DF8F /* SyncUpDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpDetail.swift; sourceTree = "<group>"; };
 		0360F7A92C1194FB0034A43C /* SyncUps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncUps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0360F7AC2C1194FB0034A43C /* SyncUpsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpsApp.swift; sourceTree = "<group>"; };
 		0360F7AE2C1194FB0034A43C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				0360F7AE2C1194FB0034A43C /* ContentView.swift */,
 				0360F7DB2C119DE10034A43C /* SyncUpsList.swift */,
 				031183A62C12E64C00D77A5E /* SyncUpForm.swift */,
+				031BC3992C2C02E90016DF8F /* SyncUpDetail.swift */,
 				0360F7D92C119B2A0034A43C /* Models.swift */,
 				0360F7B02C1194FD0034A43C /* Assets.xcassets */,
 				0360F7B22C1194FD0034A43C /* Preview Content */,
@@ -284,6 +287,7 @@
 				031183A72C12E64C00D77A5E /* SyncUpForm.swift in Sources */,
 				0360F7DC2C119DE10034A43C /* SyncUpsList.swift in Sources */,
 				0360F7AF2C1194FB0034A43C /* ContentView.swift in Sources */,
+				031BC39A2C2C02E90016DF8F /* SyncUpDetail.swift in Sources */,
 				0360F7AD2C1194FB0034A43C /* SyncUpsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
