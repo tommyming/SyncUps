@@ -146,6 +146,10 @@ extension LabelStyle where Self == TrailingIconLabelStyle {
     static var trailingIcon: Self { Self() }
 }
 
+extension URL {
+    static let syncUps = Self.documentsDirectory.appending(component: "sync-ups.json")
+}
+
 extension PersistenceReaderKey where Self == PersistenceKeyDefault<FileStorageKey<IdentifiedArrayOf<SyncUp>>>{
     static var syncUps: Self {
         PersistenceKeyDefault(
