@@ -95,7 +95,6 @@ struct SyncUpDetailView: View {
                     Label("Start Meeting", systemImage: "timer")
                         .font(.headline)
                         .foregroundColor(.accentColor)
-                    
                 }
                 HStack {
                     Label("Length", systemImage: "clock")

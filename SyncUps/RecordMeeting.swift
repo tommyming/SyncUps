@@ -27,6 +27,46 @@ struct RecordMeeting {
     enum Action {
         case endMeetingButtonTapped
         case nextButtonTapped
+        case onAppear
+        case timerTick
+    }
+    
+    @Dependency(\.continuousClock) var clock
+    @Dependency(\.dismiss) var dismiss
+    @Dependency(\.date.now) var now
+    @Dependency(\.uuid) var uuid
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .endMeetingButtonTapped:
+                return .none
+            case .nextButtonTapped:
+                return .none
+            case .onAppear:
+                return .run { send in
+                    for await _ in clock.timer(interval: .seconds(1)) {
+                        await send(.timerTick)
+                    }
+                }
+            case .timerTick:
+                state.secondsElapsed += 1
+                let secondsPerAttendee = Int(state.syncUp.durationPerAttendee.components.seconds)
+                if state.secondsElapsed.isMultiple(of: secondsPerAttendee) {
+                    if state.secondsElapsed == state.syncUp.duration.components.seconds {
+                        state.syncUp.meetings.insert(
+                            Meeting(id: uuid(), date: now, transcript: state.transcript),
+                            at: 0
+                        )
+                        
+                        return .run { _ in await dismiss() }
+                    }
+                    state.speakerIndex += 1
+                }
+                
+                return .none
+            }
+        }
     }
 }
 
@@ -67,6 +107,7 @@ struct RecordMeetingView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
+            .onAppear { store.send(.onAppear) }
         }
     }
 }
