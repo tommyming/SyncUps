@@ -14,6 +14,7 @@ struct RecordMeeting {
     
     @ObservableState
     struct State: Equatable {
+        @Presents var alert: AlertState<Action.Alert>?
         var secondsElapsed = 0
         var speakerIndex = 0
         @Shared var syncUp: SyncUp
@@ -25,11 +26,19 @@ struct RecordMeeting {
     }
     
     enum Action {
+        case alert(PresentationAction<Alert>)
         case endMeetingButtonTapped
         case nextButtonTapped
         case onAppear
         case timerTick
+        
+        enum Alert {
+            case discardMeeting
+            case saveMeeting
+        }
     }
+    
+    
     
     @Dependency(\.continuousClock) var clock
     @Dependency(\.dismiss) var dismiss
@@ -39,9 +48,29 @@ struct RecordMeeting {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .alert(.presented(.discardMeeting)):
+                return .run { _ in await dismiss() }
+            case .alert(.presented(.saveMeeting)):
+                state.syncUp.meetings.insert(
+                    Meeting(id: uuid(), date: now, transcript: state.transcript),
+                    at: 0
+                )
+                
+                return .run { _ in await dismiss() }
+            case .alert:
+                return .none
             case .endMeetingButtonTapped:
+                state.alert = .endMeeting
                 return .none
             case .nextButtonTapped:
+                guard state.speakerIndex < state.syncUp.attendees.count - 1
+                else {
+                    state.alert = .endMeeting
+                    return .none
+                }
+                
+                state.speakerIndex += 1
+                state.secondsElapsed = state.speakerIndex * Int(state.syncUp.durationPerAttendee.components.seconds)
                 return .none
             case .onAppear:
                 return .run { send in
@@ -50,6 +79,8 @@ struct RecordMeeting {
                     }
                 }
             case .timerTick:
+                guard state.alert == nil else { return .none }
+                
                 state.secondsElapsed += 1
                 let secondsPerAttendee = Int(state.syncUp.durationPerAttendee.components.seconds)
                 if state.secondsElapsed.isMultiple(of: secondsPerAttendee) {
@@ -66,6 +97,27 @@ struct RecordMeeting {
                 
                 return .none
             }
+        }
+        .ifLet(\.$alert, action: \.alert)
+    }
+}
+
+extension AlertState where Action == RecordMeeting.Action.Alert {
+    static var endMeeting: Self {
+        Self {
+            TextState("End meeting?")
+        } actions: {
+            ButtonState(action: .saveMeeting) {
+                TextState("Save and end")
+            }
+            ButtonState(role: .destructive, action: .discardMeeting) {
+                TextState("Discard")
+            }
+            ButtonState(role: .cancel) {
+                TextState("Resume")
+            }
+        } message: {
+            TextState("You are ending the meeting early. What would you like to do?")
         }
     }
 }
@@ -108,6 +160,7 @@ struct RecordMeetingView: View {
             }
             .navigationBarBackButtonHidden(true)
             .onAppear { store.send(.onAppear) }
+            .alert($store.scope(state: \.alert, action: \.alert))
         }
     }
 }
