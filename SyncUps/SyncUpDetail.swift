@@ -119,16 +119,16 @@ struct SyncUpDetailView: View {
             if !store.syncUp.meetings.isEmpty {
                 Section {
                     ForEach(store.syncUp.meetings) { meeting in
-                        Button {
-                            
-                        } label: {
+                        
+                        NavigationLink(
+                            state: AppFeature.Path.meeting(meeting, syncUp: store.syncUp)
+                        ) {
                             HStack {
                                 Image(systemName: "calendar")
                                 Text(meeting.date, style: .date)
                                 Text(meeting.date, style: .time)
                             }
                         }
-
                     }
                 } header: {
                     Text("Past meetings")

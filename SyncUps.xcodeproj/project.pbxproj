@@ -13,6 +13,7 @@
 		031BC39A2C2C02E90016DF8F /* SyncUpDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BC3992C2C02E90016DF8F /* SyncUpDetail.swift */; };
 		031BC39C2C2C22450016DF8F /* SyncUpDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BC39B2C2C22450016DF8F /* SyncUpDetailTests.swift */; };
 		031BC39E2C2D0EBB0016DF8F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BC39D2C2D0EBB0016DF8F /* App.swift */; };
+		031BC3A02C2D161A0016DF8F /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031BC39F2C2D161A0016DF8F /* Meeting.swift */; };
 		0360F7AD2C1194FB0034A43C /* SyncUpsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0360F7AC2C1194FB0034A43C /* SyncUpsApp.swift */; };
 		0360F7B12C1194FD0034A43C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0360F7B02C1194FD0034A43C /* Assets.xcassets */; };
 		0360F7B42C1194FD0034A43C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0360F7B32C1194FD0034A43C /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		031BC3992C2C02E90016DF8F /* SyncUpDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpDetail.swift; sourceTree = "<group>"; };
 		031BC39B2C2C22450016DF8F /* SyncUpDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpDetailTests.swift; sourceTree = "<group>"; };
 		031BC39D2C2D0EBB0016DF8F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		031BC39F2C2D161A0016DF8F /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		0360F7A92C1194FB0034A43C /* SyncUps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncUps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0360F7AC2C1194FB0034A43C /* SyncUpsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUpsApp.swift; sourceTree = "<group>"; };
 		0360F7B02C1194FD0034A43C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				0360F7DB2C119DE10034A43C /* SyncUpsList.swift */,
 				031183A62C12E64C00D77A5E /* SyncUpForm.swift */,
 				031BC3992C2C02E90016DF8F /* SyncUpDetail.swift */,
+				031BC39F2C2D161A0016DF8F /* Meeting.swift */,
 				0360F7D92C119B2A0034A43C /* Models.swift */,
 				0360F7B02C1194FD0034A43C /* Assets.xcassets */,
 				0360F7B22C1194FD0034A43C /* Preview Content */,
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				031BC3A02C2D161A0016DF8F /* Meeting.swift in Sources */,
 				0360F7DA2C119B2A0034A43C /* Models.swift in Sources */,
 				031183A72C12E64C00D77A5E /* SyncUpForm.swift in Sources */,
 				0360F7DC2C119DE10034A43C /* SyncUpsList.swift in Sources */,
