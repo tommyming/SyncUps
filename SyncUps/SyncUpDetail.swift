@@ -89,14 +89,14 @@ struct SyncUpDetailView: View {
     var body: some View {
         Form {
             Section {
-                NavigationLink {
-                    
-                } label: {
+                NavigationLink(
+                    state: AppFeature.Path.record(RecordMeeting.State(syncUp: store.$syncUp))
+                ) {
                     Label("Start Meeting", systemImage: "timer")
                         .font(.headline)
                         .foregroundColor(.accentColor)
+                    
                 }
-                
                 HStack {
                     Label("Length", systemImage: "clock")
                     Spacer()

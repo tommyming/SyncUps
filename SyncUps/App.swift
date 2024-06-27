@@ -15,6 +15,7 @@ struct AppFeature {
     enum Path {
         case detail(SyncUpDetail)
         case meeting(Meeting, syncUp: SyncUp)
+        case record(RecordMeeting)
     }
     
     @ObservableState
@@ -61,6 +62,8 @@ struct AppView: View {
                 SyncUpDetailView(store: detailStore)
             case let .meeting(meeting, syncUp: syncUp):
                 MeetingView(meeting: meeting, syncUp: syncUp)
+            case let .record(recordStore):
+                RecordMeetingView(store: recordStore)
             }
         }
     }
